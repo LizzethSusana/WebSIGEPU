@@ -36,7 +36,7 @@ function Inventary() {
                 setShowOffcanvas(true);
                 resetForm();
             } else if (result.isDenied) {
-                Swal.fire("", "", "info");
+                Swal.fire("Cambios no guardados", "", "info");
                 setShowOffcanvas(true);
                 resetForm();
             }
@@ -63,6 +63,7 @@ function Inventary() {
                     handleSaveClick(preparationFormValues);
                     resetForm();
                 } else if (result.isDenied) {
+                    Swal.fire("No se guardo", "", "info");
                     setShowModal(false);
                     setShowOffcanvas(true);
                     resetForm();

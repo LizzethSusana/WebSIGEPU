@@ -35,7 +35,7 @@ const SignInPage = () => {
             type: "SIGNIN",
             payload: response.data,
           });
-          navigate("/admin", { replace: true });
+          navigate("/home", { replace: true });
         } else throw Error("error");
       } catch (error) {
         console.log(error);
