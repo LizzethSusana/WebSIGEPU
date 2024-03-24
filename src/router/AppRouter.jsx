@@ -4,6 +4,8 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import AuthContext from '../config/context/auth-context';
 import AdminLayout from '../module/admin/AdminLayout';
 import Temporal from '../components/Temporal';
+import Clientes from '../components/Clientes';
+import Trabajadores from '../components/Trabajadores';
 
 const AppRouter = () => {
   const { user } = useContext(AuthContext);
@@ -17,8 +19,9 @@ const AppRouter = () => {
         {
           user.signed ? (
             <Route path='/' element={<AdminLayout />}>
-              <Route path='admin' element={<Temporal />} />
-              <Route path='users' element={<>Usuarios</>} />
+              <Route path='temporal' element={<Temporal />} />
+              <Route path='clientes' element={<Clientes />} />
+              <Route path='trabajadores' element={<Trabajadores/>} />
               <Route path='products' element={<>Productos</>} />
             </Route>
           ) : <Route path='/*' element={<SignInPage />} />

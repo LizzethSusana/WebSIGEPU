@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Navbar, Sidebar } from 'flowbite-react';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
 import { BiBuoy } from 'react-icons/bi';
 import '../../module/auth/img.css'
 import ImageLogo from '../../assets/img/logo.png'
+import { useNavigate } from 'react-router-dom';
 
-const AdminLayout = () => {
+
+const AdminLayout = (props) => {
 	// Diseñar el layout de admin
+	
+ const navigate = useNavigate();
+ const [presionado, setPrecionado] = useState(false);
+ const {press}= props;
+ const handleMultipleActions = () => {
+	navigate("/clientes")
+	  setPrecionado(true);
+	};
+  
 	return (
 		<>
 
@@ -24,13 +35,13 @@ const AdminLayout = () => {
 								<Sidebar.Item to="#" icon={HiViewBoards}>
 									Inventario
 								</Sidebar.Item>
-								<Sidebar.Item to="#" icon={HiInbox}>
+								<Sidebar.Item to="#"  onClick={()=>navigate("/temporal")}  icon={HiInbox}>
 									Pedidos
 								</Sidebar.Item>
-								<Sidebar.Item to="#" icon={HiUser}>
+								<Sidebar.Item to="#" onClick={()=>handleMultipleActions()} className={presionado ? "": ""} icon={HiUser}>
 									Clientes
 								</Sidebar.Item>
-								<Sidebar.Item to="#" icon={HiShoppingBag}>
+								<Sidebar.Item to="#" onClick={()=>navigate("/trabajadores")}  icon={HiShoppingBag}>
 									Trabajadores
 								</Sidebar.Item>								
 							</Sidebar.ItemGroup>
