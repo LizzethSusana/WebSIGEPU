@@ -19,9 +19,8 @@ const Trabajadores = () => {
     },
     // Agrega más clientes según sea necesario
   ]);
-  
-  
-   //Abrir modal de avtivo o ncativo
+
+  //Abrir modal de avtivo o ncativo
   const [isModalOpen, setIsModalOpen] = useState(false);
   // Estados para el modal de regstro
   const [registerModal, setRegisterModal] = useState(false);
@@ -65,9 +64,9 @@ const Trabajadores = () => {
   };
 
   const confirmDeleteWorker = () => {
-    console.log("Eliminando trabajador");
+    deleteTrabajador(currentTrabajador);
     toggleDeleteModal();
-  }
+  };
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -105,11 +104,10 @@ const Trabajadores = () => {
           </div>
 
           {/* Botón para agregar trabajador onClick={toggleModal} */}
-          <button  className="agregar-btn" onClick={()=>toggleRegisterModal()} >
-        Agregar trabajador
-      </button>
-      
-      </div>
+          <button className="agregar-btn" onClick={() => toggleRegisterModal()}>
+            Agregar trabajador
+          </button>
+        </div>
 
         {/* Tabla */}
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg espacio-entre-boton-y-tabla">
@@ -296,8 +294,7 @@ const Trabajadores = () => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      ¿Estás seguro de que quieres elimnar a este
-                      trabajador?
+                      ¿Estás seguro de que quieres eliminar a este trabajador?
                     </p>
                   </div>
 
@@ -305,8 +302,9 @@ const Trabajadores = () => {
                     <button
                       type="button"
                       className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                   onClick={confirmDeleteWorker}
-                    >{/*onClick={confirmDeleteWorker}*/}
+                      onClick={confirmDeleteWorker}
+                    >
+                      {/*onClick={confirmDeleteWorker}*/}
                       Aceptar
                     </button>
                     <button
@@ -360,6 +358,10 @@ const Trabajadores = () => {
         thead tr th {
           background-color: #a2160f;
           color: white;
+        }
+        /* Estilos para el cuerpo de la tabla */
+        tbody tr td {
+          color: black; /* Agrega esta regla para cambiar el color del texto en el cuerpo de la tabla a negro */
         }
 
         /* Estilos para el botón de estado */
@@ -436,8 +438,14 @@ const Trabajadores = () => {
           align-items: center; /* Para alinear verticalmente los elementos */
         }
       `}</style>
-      <AddWorkedModal isOpen={registerModal} onClose={()=>setRegisterModal(!registerModal)} />
-      <EditWorker isOpenEdit={isEditModalOpen} onCloseEdit={()=>setIsEditModalOpen(!isEditModalOpen)} />
+      <AddWorkedModal
+        isOpen={registerModal}
+        onClose={() => setRegisterModal(!registerModal)}
+      />
+      <EditWorker
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(!isEditModalOpen)}
+      />
     </>
   );
 };
